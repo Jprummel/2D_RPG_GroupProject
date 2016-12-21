@@ -1,0 +1,53 @@
+[
+	{
+		"id": 0,
+		"title": "Health Potion",
+		"value": 10,
+		"stats": {
+			"strength": 0,
+			"dexterity": 0,
+			"intellect": 0,
+			"vitality": 0,
+			"spirit": 0,
+			"level": 0
+		},
+		"description": "Heals the player.",
+		"stackable": true,
+		"rarity": "Common",
+		"slug": "health_potion"
+	},
+	{
+		"id": 1,
+		"title": "Mana Potion",
+		"value": 10,
+		"stats": {
+			"strength": 0,
+			"dexterity": 0,
+			"intellect": 0,
+			"vitality": 0,
+			"spirit": 0,
+			"level": 0
+		},
+		"description": "Restores the player' mana.",
+		"stackable": true,
+		"rarity": "Common",
+		"slug": "mana_potion"
+	},
+	{
+		"id": 2,
+		"title": "Leather Chest",
+		"value": 100,
+		"stats": {
+			"strength": 1,
+			"dexterity": 5,
+			"intellect": 0,
+			"vitality": 1,
+			"spirit": 0,
+			"level": 5
+		},
+		"description": "A chest piece made of leather",
+		"stackable": true,
+		"rarity": "Common",
+		"slug": "mana_potion"
+	}
+]
