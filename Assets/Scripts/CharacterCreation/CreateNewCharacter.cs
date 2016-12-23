@@ -24,6 +24,7 @@ public class CreateNewCharacter : MonoBehaviour {
         //Player starts at level 1 with 0 experience
         PlayerInformation.Level = 1;
         PlayerInformation.Experience = 0;
+        PlayerInformation.RequiredExperience = 500;
         //Player starts with some gold
         PlayerInformation.Gold = 500;
         _save.SaveGame();
