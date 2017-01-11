@@ -8,4 +8,5 @@ public class Tags : MonoBehaviour {
     public const string PLAYER = "Player";
     public const string SAVELOADOBJECT = "SaveLoadObject";
     public const string PLAYERINFO = "PlayerInformation";
+    public const string AUDIOTRIGGER = "AudioTrigger";//needed for testing
 }
