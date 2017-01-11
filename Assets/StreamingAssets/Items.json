@@ -35,7 +35,7 @@
 	},
 	{
 		"id": 2,
-		"title": "Leather Chest",
+		"title": "Cloak of Agility",
 		"value": 100,
 		"stats": {
 			"strength": 1,
@@ -45,9 +45,9 @@
 			"spirit": 0,
 			"level": 5
 		},
-		"description": "A chest piece made of leather",
+		"description": "Cloak that gives you more dexterity",
 		"stackable": true,
 		"rarity": "Common",
-		"slug": "mana_potion"
+		"slug": "cloak_of_agility"
 	}
 ]

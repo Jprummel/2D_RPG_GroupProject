@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -22,23 +23,56 @@ public class Inventory : MonoBehaviour
         Debug.Log("Added all the slots!");
         AddItem(0);
         AddItem(1);
-        AddItem(2);
+        AddItem(0);
+        AddItem(1);
+        AddItem(0);
+        AddItem(1);
+        AddItem(0);
     }
 
     private void AddItem(int id)
     {
         Item itemToAdd = ItemDatabase.FetchItemByID(id);
-        for (int i = 0; i < _items.Count; i++)
+
+        if(itemToAdd.Stackable && CheckIfItemIsInInventory(itemToAdd))
         {
-            if(_items[i].ID == -1)
+            for (int i = 0; i < _items.Count; i++)
             {
-                _items[i] = itemToAdd;
-                GameObject item = Instantiate(_inventoryItemPrefab, Vector3.zero, Quaternion.identity) as GameObject;
-                item.transform.SetParent(_slots[i].transform, false);
-                item.transform.localPosition = Vector2.zero;
-                item.name = itemToAdd.Title;
-                break;
+                if (_items[i].ID == id)
+                {
+                    ItemData data = _slots[i].transform.GetChild(0).GetComponent<ItemData>();
+                    data.amount++;
+                    data.transform.GetChild(0).GetComponent<Text>().text = data.amount.ToString();
+                    break;
+                }
             }
         }
+        else
+        {
+            for (int i = 0; i < _items.Count; i++)
+            {
+                if (_items[i].ID == -1)
+                {
+                    _items[i] = itemToAdd;
+                    GameObject item = Instantiate(_inventoryItemPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+                    item.GetComponent<ItemData>().item = itemToAdd;
+                    item.transform.SetParent(_slots[i].transform, false);
+                    item.transform.localPosition = Vector2.zero;
+                    item.GetComponent<Image>().sprite = itemToAdd.Sprite;
+                    item.name = itemToAdd.Title;
+                    break;
+                }
+            }
+        }
+    }
+
+    private bool CheckIfItemIsInInventory(Item item)
+    {
+        for (int i = 0; i < _items.Count; i++)
+        {
+            if (_items[i].ID == item.ID)
+                return true;
+        }
+        return false;
     }
 }
