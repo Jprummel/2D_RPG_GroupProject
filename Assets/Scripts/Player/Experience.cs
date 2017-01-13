@@ -23,8 +23,7 @@ public class Experience : MonoBehaviour {
             _experienceOverload = PlayerInformation.RequiredExperience - PlayerInformation.Experience;
             PlayerInformation.Experience = _experienceOverload;
             PlayerInformation.Level++;
-            PlayerInformation.StatPoints += 3;
-            
+            PlayerInformation.StatPoints += 3;            
         }
     }
 }
