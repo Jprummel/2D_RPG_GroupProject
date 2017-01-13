@@ -8,6 +8,6 @@ public class SpriteCollision2D : MonoBehaviour
 
 	void OnCollisionEnter2D(Collision2D coll)
     {
-        ExecuteEvents.Execute<IDamageable>(coll.gameObject, null, (x, y) => x. DecreaseResource(_damage));
+        ExecuteEvents.Execute<IResourceChangeable>(coll.gameObject, null, (x, y) => x. DecreaseResource(_damage));
     }
 }

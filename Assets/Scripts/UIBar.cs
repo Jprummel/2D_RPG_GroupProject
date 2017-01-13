@@ -1,19 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.EventSystems;
 
-public class UIBar : MonoBehaviour, IEventSystemHandler
+//put script on same object as Resource and HealthbarVisibility script
+public class UIBar : MonoBehaviour, ISendHealth
 {
     [SerializeField]private Image _uiBar;
     [SerializeField]private string _barID;
-	
-    void OnEnable()
-    {
-        Resource.OnSendResource += UpdateBar;
-    }
 
-	void UpdateBar (string barID, float fillAmount, float maxFillAmount)
+	public void UpdateBar (string barID, float fillAmount, float maxFillAmount)
     {
         if(barID == _barID)
         {
@@ -21,9 +16,4 @@ public class UIBar : MonoBehaviour, IEventSystemHandler
             gameObject.SendMessage("SetHealthbarVisible");
         }
 	}
-
-    void OnDisable()
-    {
-        Resource.OnSendResource -= UpdateBar;
-    }
 }
