@@ -16,12 +16,13 @@ public class StatAllocation : MonoBehaviour {
     private int _usedPoints;
     private int _availablePoints;
 	
-    void Start () {
-        AllocationStart();
+    void Awake() 
+    {
         PlayerStartingStats();
+        AllocationStart();
 	}
 	
-	void Update () 
+    void Update () 
     {
         ShowAvailablePoints();
         ShowButtons();
@@ -37,6 +38,7 @@ public class StatAllocation : MonoBehaviour {
 
     public void ShowAvailablePoints()
     {
+        //This functions is responsible for showing the player how many stat points he has left to allocate
         if (_availablePoints > 0)
         {
             _availablePointsText.text = "Available stat points : " + _availablePoints;
@@ -49,7 +51,7 @@ public class StatAllocation : MonoBehaviour {
 
     void PlayerStartingStats()
     {
-        //this function sets all the players stats to 10 at the character creation
+        //this function sets all the players stats to 10 at the start of character creation
         PlayerInformation.Strength  = 10;
         PlayerInformation.Dexterity = 10;
         PlayerInformation.Intellect = 10;
@@ -58,12 +60,10 @@ public class StatAllocation : MonoBehaviour {
     }
 
     public void ShowButtons()
-    {
-        //Only shows + buttons if there are available points to allocate 
-        //only show - buttons if there are points allocated and changes havent been confirmed yet
+    {        
         for (int i = 0; i < _pointsToAllocate.Length; i++)
         {
-
+            //Only shows + buttons if there are available points to allocate
             if (_pointsToAllocate[i] >= _baseStatPoints[i] && _availablePoints > 0)
             {
                 foreach (GameObject button in _addStatButtons)
@@ -79,8 +79,10 @@ public class StatAllocation : MonoBehaviour {
                 }
             }
 
+            //only show - buttons if there are points allocated and changes havent been confirmed yet
             if (_pointsToAllocate[i] > _baseStatPoints[i])
             {
+                Debug.Log("ay");
                 _removeStatButtons[i].SetActive(true);
             }
             else
