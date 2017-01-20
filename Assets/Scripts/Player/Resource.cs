@@ -17,7 +17,7 @@ public class Resource : MonoBehaviour, IResourceChangeable
         _maxResource = _resource;
 	}
 
-    public void DecreaseResource(float resourceDecreaseAmount)
+    public void ChangeResource(float resourceDecreaseAmount)
     {
         _resource -= resourceDecreaseAmount;
         SendResourceChange();
@@ -25,17 +25,6 @@ public class Resource : MonoBehaviour, IResourceChangeable
         if (_resource < 0)
         {
             _resource = _minResource;
-        }
-    }
-
-    public void IncreaseResource(float resourceIncreaseAmount)
-    {
-        _resource += resourceIncreaseAmount;
-        SendResourceChange();
-
-        if (_resource > 200)
-        {
-            _resource = _maxResource;
         }
     }
 

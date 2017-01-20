@@ -4,6 +4,5 @@ using System.Collections;
 
 public interface IResourceChangeable : IEventSystemHandler
 {
-    void DecreaseResource(float healthDecreaseAmount);
-    void IncreaseResource(float healthIncreaseAmount);
+    void ChangeResource(float healthDecreaseAmount);
 }
