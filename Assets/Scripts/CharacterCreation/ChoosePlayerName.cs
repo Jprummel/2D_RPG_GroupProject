@@ -6,6 +6,7 @@ public class ChoosePlayerName : MonoBehaviour {
 
     [SerializeField]private InputField _nameField;
     private string _playerName;
+
     //Getter and setter
     public string PlayerName
     {
@@ -16,6 +17,5 @@ public class ChoosePlayerName : MonoBehaviour {
     public void ChangeName()
     {
         _playerName = _nameField.text;
-        Debug.Log(_playerName);
     }
 }
