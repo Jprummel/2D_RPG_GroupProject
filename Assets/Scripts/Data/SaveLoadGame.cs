@@ -31,8 +31,8 @@ public class SaveLoadGame : MonoBehaviour {
         saveData.maxMana    = PlayerInformation.MaxMana;
         saveData.mana       = PlayerInformation.Mana;
         saveData.level      = PlayerInformation.Level;
-        //saveData.maxLevel = PlayerInformation.MaxLevel;
-        saveData.experience = PlayerInformation.Experience;
+        saveData.reqExperience = PlayerInformation.RequiredExperience;
+        saveData.experience = PlayerInformation.CurrentExperience;
         saveData.gold       = PlayerInformation.Gold;
         bf.Serialize(saveFile, saveData);
         saveFile.Close();
@@ -58,20 +58,10 @@ public class SaveLoadGame : MonoBehaviour {
             PlayerInformation.MaxMana       = saveData.maxMana;
             PlayerInformation.Mana          = saveData.mana;
             PlayerInformation.Level         = saveData.level;
-            //PlayerInformation.MaxLevel = saveData.maxLevel;
-            PlayerInformation.Experience    = saveData.experience;
+            PlayerInformation.RequiredExperience = saveData.reqExperience;
+            PlayerInformation.CurrentExperience    = saveData.experience;
             PlayerInformation.Gold          = saveData.gold;
         }
-
-        Debug.Log(PlayerInformation.Name);
-        Debug.Log(PlayerInformation.Strength + "Str");
-        Debug.Log(PlayerInformation.Dexterity + "Dex");
-        Debug.Log(PlayerInformation.Intellect + "Int");
-        Debug.Log(PlayerInformation.Vitality + "Vit");
-        Debug.Log(PlayerInformation.Spirit + "SPR");
-        Debug.Log(PlayerInformation.Level + "Level");
-        Debug.Log(PlayerInformation.Gold + "Gold");
-        PlayerInformation.StatPoints += 3;
         SceneManager.LoadScene("Test");
 
     }
@@ -93,6 +83,7 @@ public class SaveLoadGame : MonoBehaviour {
         public int level;
         public int maxLevel;
         public int experience;
+        public int reqExperience;
         public int gold;
     }
 }

@@ -28,7 +28,7 @@ public class PlayerInformation : MonoBehaviour {
 
     //Level related
     public static int Level                 { get; set; }
-    public static int Experience            { get; set; }
+    public static int CurrentExperience     { get; set; }
     public static int RequiredExperience    { get; set; }
     public static int StatPoints            { get; set; }
     public static int Gold                  { get; set; }

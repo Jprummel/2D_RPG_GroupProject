@@ -82,7 +82,6 @@ public class StatAllocation : MonoBehaviour {
             //only show - buttons if there are points allocated and changes havent been confirmed yet
             if (_pointsToAllocate[i] > _baseStatPoints[i])
             {
-                Debug.Log("ay");
                 _removeStatButtons[i].SetActive(true);
             }
             else

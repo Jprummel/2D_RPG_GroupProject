@@ -12,7 +12,6 @@ public class LevelUpStatPointAllocation : MonoBehaviour {
     private int _availablePoints;
     [SerializeField]private List<GameObject> _addStatButtons = new List<GameObject>();
     [SerializeField]private List<GameObject> _removeStatButtons = new List<GameObject>();
-    [SerializeField]private List<Text> _statValueText = new List<Text>();
     [SerializeField]private GameObject _confirmButton;
     [SerializeField]private Text _availablePointsText;
 
@@ -33,37 +32,11 @@ public class LevelUpStatPointAllocation : MonoBehaviour {
         ShowAvailableStatPoints();
         ShowButtons();
         RetrievePointsToAllocate();
-        ShowPlayerStats();
-    }
-
-    void ShowPlayerStats()
-    {
-        for (int i = 0; i < _statValueText.Count; i++)
-        {
-            switch (i)
-            {
-                case 0:
-                    _statValueText[i].text = PlayerInformation.Strength.ToString();
-                    break;
-                case 1:
-                    _statValueText[i].text = PlayerInformation.Dexterity.ToString();
-                    break;
-                case 2:
-                    _statValueText[i].text = PlayerInformation.Intellect.ToString();
-                    break;
-                case 3:
-                    _statValueText[i].text = PlayerInformation.Vitality.ToString();
-                    break;
-                case 4:
-                    _statValueText[i].text = PlayerInformation.Spirit.ToString();
-                    break;
-            }
-        }
     }
 
     void ShowAvailableStatPoints()
     {
-        if (_availablePoints > 0)
+        if (PlayerInformation.StatPoints > 0)
         {
             _availablePointsText.text = "Available stat points : " + _availablePoints;
         }
@@ -78,7 +51,7 @@ public class LevelUpStatPointAllocation : MonoBehaviour {
         for (int i = 0; i < _pointsToAllocate.Length; i++)
         {
             
-            if (_pointsToAllocate[i] >= _baseStatPoints[i] && _availablePoints > 0)
+            if (_pointsToAllocate[i] >= _baseStatPoints[i] && PlayerInformation.StatPoints > 0)
             {
                 foreach (GameObject button in _addStatButtons)
                 {
