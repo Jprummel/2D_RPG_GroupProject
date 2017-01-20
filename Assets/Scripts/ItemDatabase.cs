@@ -2,6 +2,7 @@
 using LitJson;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 public class ItemDatabase : MonoBehaviour
 {
@@ -17,15 +18,12 @@ public class ItemDatabase : MonoBehaviour
 
     public static Item FetchItemByID(int id)
     {
-        for (int i = 0; i < database.Count; i++)
-            if (database[i].ID == id)
-                return database[i];
-        return null;
+        return database.FirstOrDefault(t => t.ID == id);
     }
 
     private void ConstructItemDatabase()
     {
-        for (int i = 0; i < _itemData.Count; i++)
+        for (var i = 0; i < _itemData.Count; i++)
         {
             database.Add(new Item(
                 (int)   _itemData[i]["id"],

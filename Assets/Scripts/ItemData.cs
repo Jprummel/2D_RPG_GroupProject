@@ -17,16 +17,27 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         get { return _amount; }
         set { _amount = value; }
     }
+    private int _slotIndex;
+    public int slotIndex
+    {
+        get { return _slotIndex; }
+        set { _slotIndex = value; }
+    }
 
-    private Transform _originalParent;
+    private Inventory _inv;
+
+    void Start()
+    {
+        _inv = GameObject.Find("Inventory").GetComponent<Inventory>();
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         if(item != null)
         {
-            _originalParent = this.transform.parent;
             this.transform.SetParent(this.transform.parent.parent);
             this.transform.position = eventData.position;
+            SetBlockRaycasts(false);
         }
     }
 
@@ -40,7 +51,13 @@ public class ItemData : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.SetParent(_originalParent);
+        this.transform.SetParent(_inv.slots[_slotIndex].transform);
         this.transform.localPosition = Vector2.zero;
+        SetBlockRaycasts(true);
+    }
+
+    private void SetBlockRaycasts(bool value)
+    {
+        GetComponent<CanvasGroup>().blocksRaycasts = value;
     }
 }

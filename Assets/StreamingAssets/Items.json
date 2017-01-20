@@ -46,7 +46,7 @@
 			"level": 5
 		},
 		"description": "Cloak that gives you more dexterity",
-		"stackable": true,
+		"stackable": false,
 		"rarity": "Common",
 		"slug": "cloak_of_agility"
 	}
