@@ -4,6 +4,5 @@ using UnityEngine.EventSystems;
 
 public interface ISendHealth : IEventSystemHandler
 {
-    void UpdateBar();
-	
+    void UpdateBar(string barID, float fillAmount, float maxFillAmount);	
 }

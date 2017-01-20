@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public interface IDamageable : IEventSystemHandler
+public interface IResourceChangeable : IEventSystemHandler
 {
     void DecreaseResource(float healthDecreaseAmount);
     void IncreaseResource(float healthIncreaseAmount);
