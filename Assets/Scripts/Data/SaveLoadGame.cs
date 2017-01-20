@@ -62,8 +62,6 @@ public class SaveLoadGame : MonoBehaviour {
             PlayerInformation.CurrentExperience    = saveData.experience;
             PlayerInformation.Gold          = saveData.gold;
         }
-        SceneManager.LoadScene("Test");
-
     }
 
     [System.Serializable]
